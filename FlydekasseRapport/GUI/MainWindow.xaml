@@ -1,0 +1,162 @@
+﻿<Window x:Class="GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="Flydekasse 2021 - Med rapport generator" Height="750" Width="650">
+    <Grid x:Name="MainGrid" Margin="20 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1.7*" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="GridUpperLeft"
+              Grid.Column="0"
+              Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Label Content="Choose Material"
+                       FontSize="15"
+                       VerticalAlignment="Bottom" />
+                <TextBlock Grid.Column="3"
+                           Text="Enter Material Thickness in MM."
+                           TextWrapping="Wrap"
+                           FontSize="15"
+                           VerticalAlignment="Bottom" />
+                <ComboBox Grid.Row="1"
+                          Grid.ColumnSpan="2"
+                          MaxHeight="25"
+                          VerticalAlignment="Top"
+                          Margin="5 0 30 0" />
+                <TextBox Grid.Column="3"
+                         Grid.Row="1"
+                         Text="0"
+                         TextAlignment="Center"
+                         VerticalAlignment="Top"
+                         Height="22"
+                         Margin="0 0 5 0"
+                         VerticalContentAlignment="Center" />
+            </Grid>
+            <Button x:Name="buttonAddMaterialToList"
+                    Grid.Row="1"
+                    Content="Add Material To List"
+                    FontSize="25"
+                    MaxHeight="35"
+                    Margin="20 0"
+                    VerticalAlignment="Top" />
+        </Grid>
+
+        <Grid x:Name="GridLowerLeft"
+              Grid.Column="0"
+              Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Label Content="Height in Meters"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center" />
+            <Label Grid.Column="1"
+                   Content="Width in Meters"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center" />
+            <Label Grid.Column="2"
+                   Content="Depth in Meters"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center" />
+            <TextBox Grid.Row="1"
+                     Text="0"
+                     TextAlignment="Center"
+                     Height="22"
+                     VerticalAlignment="Top"
+                     Margin="5 0"
+                     VerticalContentAlignment="Center" />
+            <TextBox Grid.Row="1"
+                     Grid.Column="1"
+                     Text="0"
+                     TextAlignment="Center"
+                     Height="22"
+                     VerticalAlignment="Top"
+                     Margin="5 0"
+                     VerticalContentAlignment="Center" />
+            <TextBox Grid.Row="1"
+                     Grid.Column="2"
+                     Text="0"
+                     TextAlignment="Center"
+                     Height="22"
+                     VerticalAlignment="Top"
+                     Margin="5 0"
+                     VerticalContentAlignment="Center" />
+            <Button x:Name="buttonAddDimensionsToList"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="3"
+                    Content="Add Dimensions To List"
+                    FontSize="25"
+                    MaxHeight="35"
+                    Margin="20 0"
+                    VerticalAlignment="Top" />
+            <Button x:Name="buttonMakeReportAndShow"
+                    Grid.Row="7"
+                    Grid.ColumnSpan="3"
+                    Content="Make The Report And Show It"
+                    FontSize="25"
+                    MaxHeight="35"
+                    Margin="5 0"
+                    VerticalAlignment="Top" />
+        </Grid>
+
+        <Grid x:Name="GridUpperRight"
+              Grid.Column="1"
+              Grid.Row="0"
+              Margin="5 0 0 0" >
+            <GroupBox Header="Selected Materials">
+                <ListView />
+            </GroupBox>
+        </Grid>
+
+        <Grid x:Name="GridLowerRight"
+              Grid.Column="1"
+              Grid.Row="1"
+              Margin="5 0 0 0" >
+            <GroupBox Header="Dimensions To Calculate">
+                <ListView Margin="2" />
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>
