@@ -49,10 +49,15 @@
                           Grid.ColumnSpan="2"
                           MaxHeight="25"
                           VerticalAlignment="Top"
-                          Margin="5 0 30 0" />
+                          Margin="5 0 30 0"
+                          ItemsSource="{Binding listMaterials}"
+                          SelectedValue="{Binding selectedMaterial.material}"
+                          SelectedItem="{Binding selectedMaterial}"
+                          SelectedValuePath="materialName"
+                          DisplayMemberPath="materialName" />
                 <TextBox Grid.Column="3"
                          Grid.Row="1"
-                         Text="0"
+                         Text="{Binding selectedMaterial.materialDim, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          TextAlignment="Center"
                          VerticalAlignment="Top"
                          Height="22"
@@ -65,7 +70,8 @@
                     FontSize="25"
                     MaxHeight="35"
                     Margin="20 0"
-                    VerticalAlignment="Top" />
+                    VerticalAlignment="Top"
+                    Click="buttonAddMaterialToList_Click" />
         </Grid>
 
         <Grid x:Name="GridLowerLeft"
@@ -101,7 +107,7 @@
                    VerticalAlignment="Bottom"
                    HorizontalAlignment="Center" />
             <TextBox Grid.Row="1"
-                     Text="0"
+                     Text="{Binding selectedBox.strBoxHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=N3}"
                      TextAlignment="Center"
                      Height="22"
                      VerticalAlignment="Top"
@@ -109,7 +115,7 @@
                      VerticalContentAlignment="Center" />
             <TextBox Grid.Row="1"
                      Grid.Column="1"
-                     Text="0"
+                     Text="{Binding selectedBox.strBoxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=N3}"
                      TextAlignment="Center"
                      Height="22"
                      VerticalAlignment="Top"
@@ -117,7 +123,7 @@
                      VerticalContentAlignment="Center" />
             <TextBox Grid.Row="1"
                      Grid.Column="2"
-                     Text="0"
+                     Text="{Binding selectedBox.strBoxDepth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=N3}"
                      TextAlignment="Center"
                      Height="22"
                      VerticalAlignment="Top"
@@ -130,7 +136,8 @@
                     FontSize="25"
                     MaxHeight="35"
                     Margin="20 0"
-                    VerticalAlignment="Top" />
+                    VerticalAlignment="Top"
+                    Click="buttonAddDimensionsToList_Click" />
             <Button x:Name="buttonMakeReportAndShow"
                     Grid.Row="7"
                     Grid.ColumnSpan="3"
@@ -138,7 +145,8 @@
                     FontSize="25"
                     MaxHeight="35"
                     Margin="5 0"
-                    VerticalAlignment="Top" />
+                    VerticalAlignment="Top"
+                    Click="buttonMakeReportAndShow_Click" />
         </Grid>
 
         <Grid x:Name="GridUpperRight"
@@ -146,11 +154,22 @@
               Grid.Row="0"
               Margin="5 0 0 0" >
             <GroupBox Header="Selected Materials">
-                <ListView>
+                <ListView ItemsSource="{Binding listSelectedMaterials}">
                     <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Material" Width="150" />
-                            <GridViewColumn Header="Thickness" Width="70" />
+                        <GridView AllowsColumnReorder="True">
+                            <GridViewColumn Header="Material"
+                                            Width="140"
+                                            DisplayMemberBinding="{Binding materialName}" />
+                            <GridViewColumn Header="Thickness"
+                                            Width="70"
+                                            DisplayMemberBinding="{Binding materialDim}" />
+                            <GridView.ColumnHeaderToolTip>
+                                <TextBlock>
+                                    Shows the selected materials and the thickness.
+                                    <LineBreak />
+                                    Double click to remove.
+                                </TextBlock>
+                            </GridView.ColumnHeaderToolTip>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -162,12 +181,23 @@
               Grid.Row="1"
               Margin="5 0 0 0" >
             <GroupBox Header="Dimensions To Calculate">
-                <ListView Margin="2">
+                <ListView Margin="2" ItemsSource="{Binding listSelectedBoxes}">
                     <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Height" Width="72" />
-                            <GridViewColumn Header="Width" Width="72" />
-                            <GridViewColumn Header="Depth" Width="72" />
+                        <GridView AllowsColumnReorder="True">
+                            <GridViewColumn Header="Height"
+                                            Width="72"
+                                            DisplayMemberBinding="{Binding boxHeight}" />
+                            <GridViewColumn Header="Width"
+                                            Width="72"
+                                            DisplayMemberBinding="{Binding boxWidth}" />
+                            <GridViewColumn Header="Depth"
+                                            Width="72"
+                                            DisplayMemberBinding="{Binding boxDepth}" />
+                            <GridView.ColumnHeaderToolTip>
+                                <TextBlock>
+                                    
+                                </TextBlock>
+                            </GridView.ColumnHeaderToolTip>
                         </GridView>
                     </ListView.View>
                 </ListView>
