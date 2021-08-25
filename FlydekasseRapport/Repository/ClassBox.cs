@@ -14,10 +14,10 @@ namespace Repository
         private ClassMaterial _boxMaterial;
         private double _boxVolume;
         private double _boxWeight;
-        private double _boxWide;
+        private double _boxWidth;
         private string _strBoxDepth;
         private string _strBoxHeight;
-        private string _strBoxWide;
+        private string _strBoxWidth;
 
         /// <summary>
         /// Default constructor with initialised default values.
@@ -27,13 +27,13 @@ namespace Repository
             boxBuoyancy = 0D;
             boxDepth = 0D;
             boxHeight = 0D;
-            boxMaterial = new ClassMaterial(); 
+            boxMaterial = new ClassMaterial();
             boxVolume = 0D;
             boxWeight = 0D;
-            boxWide = 0D;
+            boxWidth = 0D;
             strBoxDepth = "";
             strBoxHeight = "";
-            strBoxWide = "";
+            strBoxWidth = "";
         }
 
         /// <summary>
@@ -48,10 +48,10 @@ namespace Repository
             boxMaterial = new ClassMaterial(inClassbox.boxMaterial);
             boxVolume = inClassbox.boxVolume;
             boxWeight = inClassbox.boxWeight;
-            boxWide = inClassbox.boxWide;
+            boxWidth = inClassbox.boxWidth;
             strBoxDepth = inClassbox.strBoxDepth;
             strBoxHeight = inClassbox.strBoxHeight;
-            strBoxWide = inClassbox.strBoxWide;
+            strBoxWidth = inClassbox.strBoxWidth;
         }
 
         /// <summary>
@@ -68,10 +68,10 @@ namespace Repository
             boxMaterial = new ClassMaterial(inClassMaterial);
             boxVolume = inClassbox.boxVolume;
             boxWeight = inClassbox.boxWeight;
-            boxWide = inClassbox.boxWide;
+            boxWidth = inClassbox.boxWidth;
             strBoxDepth = inClassbox.strBoxDepth;
             strBoxHeight = inClassbox.strBoxHeight;
-            strBoxWide = inClassbox.strBoxWide;
+            strBoxWidth = inClassbox.strBoxWidth;
         }
 
         public double boxBuoyancy
@@ -87,7 +87,6 @@ namespace Repository
             }
         }
 
-
         public double boxDepth
         {
             get { return _boxDepth; }
@@ -100,7 +99,6 @@ namespace Repository
                 Notify("boxDepth");
             }
         }
-
 
         public double boxHeight
         {
@@ -115,7 +113,6 @@ namespace Repository
             }
         }
 
-
         public ClassMaterial boxMaterial
         {
             get { return _boxMaterial; }
@@ -128,7 +125,6 @@ namespace Repository
                 Notify("boxMaterial");
             }
         }
-
 
         public double boxVolume
         {
@@ -143,8 +139,6 @@ namespace Repository
             }
         }
 
-
-
         public double boxWeight
         {
             get { return _boxWeight; }
@@ -158,20 +152,18 @@ namespace Repository
             }
         }
 
-
-        public double boxWide
+        public double boxWidth
         {
-            get { return _boxWide; }
+            get { return _boxWidth; }
             set
             {
-                if (_boxWide != value)
+                if (_boxWidth != value)
                 {
-                    _boxWide = value;
+                    _boxWidth = value;
                 }
-                Notify("boxWide");
+                Notify("boxWidth");
             }
         }
-
 
         public string strBoxDepth
         {
@@ -180,12 +172,19 @@ namespace Repository
             {
                 if (_strBoxDepth != value)
                 {
-                    _strBoxDepth = value;
+                    if (double.TryParse(value, out double x))
+                    {
+                        _strBoxDepth = value;
+                        boxDepth = x;
+                    }
+                    if (value == "" || value == ",")
+                    {
+                        _strBoxDepth = value;
+                    }
                 }
                 Notify("strBoxDepth");
             }
         }
-
 
         public string strBoxHeight
         {
@@ -194,34 +193,77 @@ namespace Repository
             {
                 if (_strBoxHeight != value)
                 {
-                    _strBoxHeight = value;
+                    if (double.TryParse(value, out double x))
+                    {
+                        _strBoxHeight = value;
+                        boxHeight = x;
+                    }
+                    if (value == "" || value == ",")
+                    {
+                        _strBoxHeight = value;
+                    }
                 }
                 Notify("strBoxHeight");
             }
         }
 
-
-        public string strBoxWide
+        public string strBoxWidth
         {
-            get { return _strBoxWide; }
+            get { return _strBoxWidth; }
             set
             {
-                if (_strBoxWide != value)
+                if (_strBoxWidth != value)
                 {
-                    _strBoxWide = value;
+                    if (double.TryParse(value, out double x))
+                    {
+                        _strBoxWidth = value;
+                        boxWidth = x;
+                    }
+                    if (value == "" || value == ",")
+                    {
+                    _strBoxWidth = value;
+                    }
                 }
-                Notify("strBoxWide");
+                Notify("strBoxWidth");
             }
         }
 
-        public void CalculateAllBox()
+        /// <summary>
+        ///  Calculates the box volume and buoyancy.
+        ///  <br>Results are saved in: boxVolume and boxBuoyancy</br>
+        /// </summary>
+        public void CalculateAllBoxes()
         {
-
+            if (boxHeight > 0D && boxWidth > 0D && boxDepth > 0D) // Check if all values are above zero, otherwise it can't be calculated.
+            {
+                CalculateMaterialBoxes();
+                boxVolume = boxHeight * boxWidth * boxDepth;
+                boxBuoyancy = (boxVolume * 1000D) - boxWeight;
+            }
         }
 
-        public void CalculateMaterialBox()
+        /// <summary>
+        /// Calculates the box weight.
+        /// <br>Result is saved in: boxWeight</br>
+        /// </summary>
+        public void CalculateMaterialBoxes()
         {
+            if (boxMaterial != null)
+            {
+                if (boxHeight > 0D && boxWidth > 0D && boxDepth > 0D) // Check if all values are above zero, otherwise it can't be calculated
+                {
+                    double matWeight = boxMaterial.materialWeight * 100D; // Takes the decimeter input and converts it to cubic metres.
+                    double matDim = boxMaterial.materialDim / 1000D; // Takes the millimetre input and converts it to metres.
 
+                    double mass1;
+                    double mass2;
+
+                    mass1 = boxHeight * boxWidth * boxDepth * matWeight; // Calculate the volume of the entire box
+                    mass2 = (boxHeight - (matDim * 2D)) * (boxWidth - (matDim * 2D)) * (boxDepth - (matDim * 2D)) * matWeight; // Calculate the volume of the cavity (empty space) inside the box.
+
+                    boxWeight = mass1 - mass2;
+                }
+            }
         }
     }
 }
