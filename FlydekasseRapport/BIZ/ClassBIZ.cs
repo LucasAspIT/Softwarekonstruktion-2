@@ -24,7 +24,12 @@ namespace BIZ
         /// </summary>
         public ClassBIZ()
         {
-
+            _listMaterials = new List<ClassMaterial>();
+            _listSelectedBoxes = new ObservableCollection<ClassBox>();
+            _listSelectedMaterials = new ObservableCollection<ClassMaterial>();
+            _selectedBox = new ClassBox();
+            _selectedMaterial = new ClassMaterial();
+            CFH = new ClassFileHandler();
         }
 
         public List<ClassMaterial> listMaterials
@@ -115,7 +120,10 @@ namespace BIZ
 
         private void SetUpMaterialList()
         {
-
+            listMaterials.Add(new ClassMaterial("Træ", 0.987, 0));
+            listMaterials.Add(new ClassMaterial("Plast", 3.378, 0));
+            listMaterials.Add(new ClassMaterial("Glas", 14.251, 0));
+            listMaterials.Add(new ClassMaterial("Jern", 25.477, 0));
         }
     }
 }
