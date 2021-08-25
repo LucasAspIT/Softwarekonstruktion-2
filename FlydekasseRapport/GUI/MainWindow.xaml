@@ -146,7 +146,14 @@
               Grid.Row="0"
               Margin="5 0 0 0" >
             <GroupBox Header="Selected Materials">
-                <ListView />
+                <ListView>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Material" Width="150" />
+                            <GridViewColumn Header="Thickness" Width="70" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </GroupBox>
         </Grid>
 
@@ -155,7 +162,15 @@
               Grid.Row="1"
               Margin="5 0 0 0" >
             <GroupBox Header="Dimensions To Calculate">
-                <ListView Margin="2" />
+                <ListView Margin="2">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Height" Width="72" />
+                            <GridViewColumn Header="Width" Width="72" />
+                            <GridViewColumn Header="Depth" Width="72" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </GroupBox>
         </Grid>
     </Grid>
