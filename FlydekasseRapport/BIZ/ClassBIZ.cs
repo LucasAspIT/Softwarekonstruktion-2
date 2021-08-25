@@ -30,6 +30,7 @@ namespace BIZ
             _selectedBox = new ClassBox();
             _selectedMaterial = new ClassMaterial();
             CFH = new ClassFileHandler();
+            SetUpMaterialList();
         }
 
         public List<ClassMaterial> listMaterials
@@ -67,7 +68,7 @@ namespace BIZ
                 {
                     _listSelectedMaterials = value;
                 }
-                Notify("_listSelectedMaterials");
+                Notify("listSelectedMaterials");
             }
         }
 
@@ -80,7 +81,7 @@ namespace BIZ
                 {
                     _selectedBox = value;
                 }
-                Notify("_selectedBox");
+                Notify("selectedBox");
             }
         }
         public ClassMaterial selectedMaterial
@@ -98,12 +99,12 @@ namespace BIZ
 
         public void AddBoxToSelectedList()
         {
-
+            listSelectedBoxes.Add(new ClassBox(selectedBox));
         }
 
         public void AddMaterialToSelectedList()
         {
-
+            listSelectedMaterials.Add(new ClassMaterial(selectedMaterial));
         }
 
         public void MakeReportFile()
