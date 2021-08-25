@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,8 @@ namespace IO
         public ClassFileHandler()
         {
             // _path = "C:\CodingFolder\S2\FlydekasseRapport\RapportResultater"
-            _path = @"..\RapportResultater";
+            // _path = @"..\RapportResultater";
+            _path = "";
         }
 
         /// <summary>
@@ -29,11 +31,35 @@ namespace IO
             _path = newPath;
         }
 
-        private string WriteTextToFile(string inText)
+        public void SetPath(string newPath)
         {
-            string res = "";
+            _path = newPath;
+        }
 
-            return res;
+        /// <summary>
+        /// Writes the report to a .txt file and opens it.
+        /// <br>Returns the path to the saved file, so it can be used to automatically open the file.</br>
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>string</returns>
+        private string WriteTextToFile(string text)
+        {
+            _path = @"..\RapportResultater" + DateTime.Now.ToString("yyyy MM dd - HH-mm-ss") + "_Rapport.txt";
+
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(File.Create(_path), Encoding.GetEncoding("UTF-8")))
+                {
+                    writer.WriteLine(text);
+                }
+            }
+            catch (IOException ex)
+            {
+
+                throw ex;
+            }
+
+            return _path;
         }
     }
 }
