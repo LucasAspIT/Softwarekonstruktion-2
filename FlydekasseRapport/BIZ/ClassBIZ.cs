@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using IO;
 using Repository;
+using System.Diagnostics;
 
 namespace BIZ
 {
@@ -109,12 +110,38 @@ namespace BIZ
 
         public void MakeReportFile()
         {
+            string strReport = $"\n\n\t\t{DateTime.Now.ToString("dd-MM-yyyy")} - FLYDEBOKS RAPPORT\n\n";
 
+            foreach (ClassMaterial material in listSelectedMaterials)
+            {
+                strReport += $" - - {material.materialDim} mm. {material.materialName}\n\n";
+                strReport += $"\t\tHeight\t\tWidth\t\tDepth\t\t\t\tBuoyancy\t\t\t\t\tBox Weight\t\t\t% above the water surface\n";
+                foreach (ClassBox box in listSelectedBoxes)
+                {
+                    ClassBox tempBox = new ClassBox(box, material);
+                    strReport += $"\t\t{tempBox.boxHeight}\t\t\t{tempBox.boxWidth}\t\t\t{tempBox.boxDepth}\t\t\t=\t\t{tempBox.boxBuoyancy.ToString("#0.0000")}" +
+                                 $" kg.\t\t#\t\t{tempBox.boxWeight.ToString("#0.0000")}\t\t\t\t{CalculatePercentageAboveTheWaterSurface(tempBox)} \n";
+                }
+                strReport += $"\n * * * * * * *\n\n";
+            }
+
+            string filePath = CFH.WriteTextToFile(strReport);
+
+            Process.Start(filePath);
         }
 
         private string CalculatePercentageAboveTheWaterSurface(ClassBox inBox)
         {
             string res = "";
+
+            double calcRes = ((inBox.boxVolume * 1000) - inBox.boxWeight) * 100 / (inBox.boxVolume * 1000);
+
+            if (calcRes < 0)
+            {
+                calcRes = 0;
+            }
+
+            res = calcRes.ToString("#0.00");
 
             return res;
         }
