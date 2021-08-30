@@ -42,9 +42,9 @@ namespace IO
         /// </summary>
         /// <param name="text"></param>
         /// <returns>string</returns>
-        private string WriteTextToFile(string text)
+        public string WriteTextToFile(string text)
         {
-            _path = @"..\RapportResultater" + DateTime.Now.ToString("yyyy MM dd - HH-mm-ss") + "_Rapport.txt";
+            _path = @"..\..\..\RapportResultater\" + DateTime.Now.ToString("yyyy MM dd - HH-mm-ss") + "_Rapport.txt";
 
             try
             {
