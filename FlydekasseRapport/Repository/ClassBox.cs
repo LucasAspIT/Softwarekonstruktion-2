@@ -65,13 +65,13 @@ namespace Repository
             boxBuoyancy = inClassbox.boxBuoyancy;
             boxDepth = inClassbox.boxDepth;
             boxHeight = inClassbox.boxHeight;
-            boxMaterial = new ClassMaterial(inClassMaterial);
             boxVolume = inClassbox.boxVolume;
             boxWeight = inClassbox.boxWeight;
             boxWidth = inClassbox.boxWidth;
             strBoxDepth = inClassbox.strBoxDepth;
             strBoxHeight = inClassbox.strBoxHeight;
             strBoxWidth = inClassbox.strBoxWidth;
+            boxMaterial = new ClassMaterial(inClassMaterial);
         }
 
         public double boxBuoyancy
@@ -121,6 +121,7 @@ namespace Repository
                 if (_boxMaterial != value)
                 {
                     _boxMaterial = value;
+                    CalculateAllBoxes();
                 }
                 Notify("boxMaterial");
             }
