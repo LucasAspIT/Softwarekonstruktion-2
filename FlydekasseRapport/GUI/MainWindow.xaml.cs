@@ -47,7 +47,7 @@ namespace GUI
 
         private void buttonMakeReportAndShow_Click(object sender, RoutedEventArgs e)
         {
-
+            BIZ.MakeReportFile();
         }
     }
 }
