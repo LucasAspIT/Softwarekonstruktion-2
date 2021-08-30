@@ -158,22 +158,22 @@ namespace BIZ
         /// Adds two numbers together
         /// </summary>
         /// <returns>A double with the result</returns>
-        private double CalcResPlus()
+        public double CalcResPlus()
         {
             return tal1Doub + tal2Doub;
         }
 
-        private double CalcResMinus()
+        public double CalcResMinus()
         {
             return tal1Doub - tal2Doub;
         }
 
-        private double CalcResGange()
+        public double CalcResGange()
         {
             return tal1Doub * tal2Doub;
         }
 
-        private double CalcResDiv()
+        public double CalcResDiv()
         {
             double res = 0D;
 
