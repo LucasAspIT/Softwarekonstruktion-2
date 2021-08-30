@@ -1,0 +1,45 @@
+﻿
+
+		30-08-2021 - FLYDEBOKS RAPPORT
+
+ - - 5 mm. Træ
+
+		Height		Width		Depth				Buoyancy					Box Weight			% above the water surface
+		3			2			1			=		5989,2021 kg.		#		10,7979 				99,82 
+		1			1			1			=		997,0685 kg.		#		2,9315 				99,71 
+		2			3			1			=		5989,2021 kg.		#		10,7979 				99,82 
+		3			4			3			=		35967,5276 kg.		#		32,4724 				99,91 
+
+ * * * * * * *
+
+ - - 1 mm. Jern
+
+		Height		Width		Depth				Buoyancy					Box Weight			% above the water surface
+		3			2			1			=		5944,0117 kg.		#		55,9883 				99,07 
+		1			1			1			=		984,7444 kg.		#		15,2556 				98,47 
+		2			3			1			=		5944,0117 kg.		#		55,9883 				99,07 
+		3			4			3			=		35831,9537 kg.		#		168,0463 				99,53 
+
+ * * * * * * *
+
+ - - 3 mm. Glas
+
+		Height		Width		Depth				Buoyancy					Box Weight			% above the water surface
+		3			2			1			=		5906,2509 kg.		#		93,7491 				98,44 
+		1			1			1			=		974,5018 kg.		#		25,4982 				97,45 
+		2			3			1			=		5906,2509 kg.		#		93,7491 				98,44 
+		3			4			3			=		35718,3429 kg.		#		281,6571 				99,22 
+
+ * * * * * * *
+
+ - - 2 mm. Plast
+
+		Height		Width		Depth				Buoyancy					Box Weight			% above the water surface
+		3			2			1			=		5985,1692 kg.		#		14,8308 				99,75 
+		1			1			1			=		995,9626 kg.		#		4,0374 				99,60 
+		2			3			1			=		5985,1692 kg.		#		14,8308 				99,75 
+		3			4			3			=		35955,4644 kg.		#		44,5356 				99,88 
+
+ * * * * * * *
+
+
