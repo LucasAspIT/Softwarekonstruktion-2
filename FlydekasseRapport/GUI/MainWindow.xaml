@@ -185,13 +185,13 @@
                     <ListView.View>
                         <GridView AllowsColumnReorder="True">
                             <GridViewColumn Header="Height"
-                                            Width="72"
+                                            Width="68"
                                             DisplayMemberBinding="{Binding boxHeight}" />
                             <GridViewColumn Header="Width"
-                                            Width="72"
+                                            Width="68"
                                             DisplayMemberBinding="{Binding boxWidth}" />
                             <GridViewColumn Header="Depth"
-                                            Width="72"
+                                            Width="68"
                                             DisplayMemberBinding="{Binding boxDepth}" />
                             <GridView.ColumnHeaderToolTip>
                                 <TextBlock>
