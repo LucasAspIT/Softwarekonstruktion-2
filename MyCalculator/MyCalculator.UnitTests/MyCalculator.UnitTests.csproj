@@ -52,6 +52,8 @@
     <Compile Include="CalculatorPlusTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CalculatorMinusTests.cs" />
+    <Compile Include="CalculatorMultiplicationTests.cs" />
+    <Compile Include="CalculatorDivisionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
