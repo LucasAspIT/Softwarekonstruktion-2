@@ -15,7 +15,7 @@ namespace MyCalculator.UnitTests
             // Arrange
             CC.tal1 = "10";
             CC.tal2 = "5";
-            double finalRes = 5;
+            double finalRes = 5D;
 
             // Act
             double res = CC.CalcResMinus();
@@ -36,7 +36,7 @@ namespace MyCalculator.UnitTests
             double res = CC.CalcResMinus();
 
             // Assert
-            Assert.AreEqual(finalRes, res, 0.00001);
+            Assert.AreEqual(finalRes, res, 0.00001D);
         }
     }
 }
