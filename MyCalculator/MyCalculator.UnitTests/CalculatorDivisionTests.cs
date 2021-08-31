@@ -21,7 +21,7 @@ namespace MyCalculator.UnitTests
             double res = CC.CalcResDiv();
 
             // Assert
-            Assert.AreEqual(finalRes, res, 0.00001);
+            Assert.AreEqual(finalRes, res, 0.00001D);
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace MyCalculator.UnitTests
             // Arrange
             CC.tal1 = "35";
             CC.tal2 = "0";
-            double finalRes = 0;
+            double finalRes = 0D;
 
             // Act
             double res = CC.CalcResDiv();
