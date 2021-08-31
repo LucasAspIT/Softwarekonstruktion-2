@@ -10,12 +10,12 @@ namespace MyCalculator.UnitTests
         ClassCalculator CC = new ClassCalculator();
 
         [TestMethod]
-        public void CanCalculate_Addition_ReturnsCalculatedIntegers()
+        public void CanCalculate_Addition_CorrectlyCalculatesIntegers()
         {
             // Arrange
             CC.tal1 = "55";
             CC.tal2 = "45";
-            double finalRes = 100;
+            double finalRes = 100D;
 
             // Act
             double res = CC.CalcResPlus();
@@ -36,7 +36,7 @@ namespace MyCalculator.UnitTests
             double res = CC.CalcResPlus();
 
             // Assert
-            Assert.AreEqual(finalRes, res, 0.00001);
+            Assert.AreEqual(finalRes, res, 0.00001D);
         }
     }
 }
