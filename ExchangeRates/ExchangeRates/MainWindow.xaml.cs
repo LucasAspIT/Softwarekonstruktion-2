@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BIZ;
 
 namespace ExchangeRates
 {
@@ -20,9 +21,12 @@ namespace ExchangeRates
     /// </summary>
     public partial class MainWindow : Window
     {
+        ClassBIZ BIZ;
         public MainWindow()
         {
             InitializeComponent();
+            BIZ = new ClassBIZ();
+            MainGrid.DataContext = BIZ;
         }
     }
 }
