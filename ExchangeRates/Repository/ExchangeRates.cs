@@ -15,14 +15,14 @@ namespace Repository
             license = "";
             timestamp = 0;
             Base = "";
-            rates = new List<ClassRates>();
+            rates = new Dictionary<string, double>();
         }
 
         private string _disclaimer;
         private string _license;
         private int _timestamp;
         private string _Base;
-        private List<ClassRates> _rates;
+        private Dictionary<string, double> _rates;
 
         public string disclaimer
         {
@@ -76,7 +76,7 @@ namespace Repository
             }
         }
 
-        public List<ClassRates> rates
+        public Dictionary<string, double> rates
         {
             get { return _rates; }
             set
