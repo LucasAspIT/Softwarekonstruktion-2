@@ -21,6 +21,11 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
+        <!-- I denne ListView knytter den collection der skal vises i oversigten gennem ItemsSource, hvor der benyttes Binding med angivelse af det property der skal bindes til.
+        Derved fyldes ListView med objekter. ListView kan ikke vise indholdet af disse objekter uden at man angiver hvilke properties der skal ligge til grund for det viste i listen.
+        Dette gøres ved at oprette kolonner i listen.
+        I GridViewColumn skal der angives kilden til hvad der skal vises fra de enkelte objekterved at angive DisplayMemberBinding, hvor der igen anvendes binding ved et givent property i objektet.
+        SelectedItem angiver gennem Binding, hvilket property der skal modtage en reference til det objekt der er valgt/klikket på. Datatypen på det modtagende property skal naturligvis være identisk med objekttypen som er indeholdt i ListView. I dette tilfælde bindes der til property 'rate'. -->
         <ListView ItemsSource="{Binding listRates}"
                   SelectedItem="{Binding rate}"
                   Grid.Column="0"

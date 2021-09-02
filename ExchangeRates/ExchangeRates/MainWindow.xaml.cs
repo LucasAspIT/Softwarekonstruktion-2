@@ -22,6 +22,15 @@ namespace ExchangeRates
     public partial class MainWindow : Window
     {
         ClassBIZ BIZ;
+
+        /// <summary>
+        /// InitializeComponent() er et kald til metoden i classen Window som bygger brugergrænsefladen til noget der kan grafisk vises på en skærm.
+        /// Dette metodekald skal *altid* stå først i constructoren.
+        /// 
+        /// I constructoren initialiseres den tomme instant af ClassBIZ.
+        /// 
+        /// MainGrid.DataContext = BIZ; Her oprettes forbindelsen mellem GUI og ClassBIZ hvor man finder de properties der holder de værdier/data der skal vises på brugergrænsefladen.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();

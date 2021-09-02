@@ -157,9 +157,10 @@ namespace Repository
             }
         }
 
+        // Takes the provided timestamp in UNIX and converts it to a readable string formatted to day-month-year hour:minutes:seconds e.g. 02-09-2021 12:34:55
         private void MakeTimeString()
         {
-            strDateTime = DateTimeOffset.FromUnixTimeSeconds(timestamp).ToString("dd-MM-yyyy HH:mm:ss") + " (GMT+0)"; // GMT because openexchangerates is based in the UK
+            strDateTime = DateTimeOffset.FromUnixTimeSeconds(timestamp).ToString("dd-MM-yyyy HH:mm:ss") + " (GMT+0)"; // OpenExchangeRates sends the timestamp in GMT
         }
 
         private void CalculateRateInDKK()
