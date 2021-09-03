@@ -6,8 +6,23 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
+    /// <summary>
+    /// Denne class benyttes til at holde data vedrørende en valuta.
+    /// Data fra Web API omsættes til passende data typer, som passer til applikationen.
+    /// </summary>
     public class ClassRates : ClassNotify
     {
+        private string _key;
+        private double _value;
+        private string _Base;
+        private int _timestamp;
+        private string _license;
+        private string _disclaimer;
+        private string _strDateTime;
+        private double _rateDK;
+
+        private double _DKK;
+
         public ClassRates()
         {
             disclaimer = "";
@@ -21,10 +36,17 @@ namespace Repository
             _rateDK = 0D;
         }
 
+        /// <summary>
+        /// Denne overloaded constructor, gør det muligt at oprette en ny instans af ClassRates, som er baseret på valutakoden og valutakursen.
+        /// Ved at modtage en fuld instans af ExchangeRates, fremtidssikrer jeg ClassRates, da jeg kan udlede langt flere data fra denne instans.
+        /// </summary>
+        /// <param name="rates">ExchangeRates</param>
+        /// <param name="inKey">string</param>
+        /// <param name="inValue">double</param>
         public ClassRates(ExchangeRates rates, string inKey, double inValue)
         {
             _DKK = rates.rates["DKK"];
-            _rateDK = 0D;
+            rateDK = 0D;
             disclaimer = rates.disclaimer;
             license = rates.license;
             strDateTime = "";
@@ -33,17 +55,6 @@ namespace Repository
             key = inKey;
             value = inValue;
         }
-
-        private string _key;
-        private double _value;
-        private string _Base;
-        private int _timestamp;
-        private string _license;
-        private string _disclaimer;
-        private string _strDateTime;
-        private double _rateDK;
-
-        private double _DKK;
 
 
         public double rateDK
@@ -59,7 +70,6 @@ namespace Repository
             }
         }
 
-
         public string disclaimer
         {
             get { return _disclaimer; }
@@ -73,7 +83,6 @@ namespace Repository
             }
         }
 
-
         public string license
         {
             get { return _license; }
@@ -86,7 +95,6 @@ namespace Repository
                 Notify("license");
             }
         }
-
 
         public int timestamp
         {
@@ -102,7 +110,6 @@ namespace Repository
             }
         }
 
-
         public string Base
         {
             get { return _Base; }
@@ -115,7 +122,6 @@ namespace Repository
                 Notify("Base");
             }
         }
-
 
         public string key
         {
@@ -130,6 +136,11 @@ namespace Repository
             }
         }
 
+        /// <summary>
+        /// Dennee property har to funktioner. Ud over at den holder værdien for den valgte valutakurs i USD, sikrer den også at udregningen til valutakursen i DKK udføres.
+        /// Dette sikres kun ved et kald til metoden CalculateRateInDKK();
+        /// Foretages kun, hvis data i value opdateres.
+        /// </summary>
         public double value
         {
             get { return _value; }
@@ -157,12 +168,17 @@ namespace Repository
             }
         }
 
-        // Takes the provided timestamp in UNIX and converts it to a readable string formatted to day-month-year hour:minutes:seconds e.g. 02-09-2021 12:34:55
+        /// <summary>
+        /// Takes the provided timestamp in UNIX and converts it to a readable string formatted as day-month-year hour:minutes:seconds e.g. 02-09-2021 12:34:55
+        /// </summary>
         private void MakeTimeString()
         {
-            strDateTime = DateTimeOffset.FromUnixTimeSeconds(timestamp).ToString("dd-MM-yyyy HH:mm:ss") + " (GMT+0)"; // OpenExchangeRates sends the timestamp in GMT
+            strDateTime = DateTimeOffset.FromUnixTimeSeconds(timestamp).ToString("dd-MM-yyyy HH:mm:ss") + " (GMT+0)"; // UNIX time is in GMT+0
         }
 
+        /// <summary>
+        /// Denne metode omregner valutakursen fra USD til kursen i DKK.
+        /// </summary>
         private void CalculateRateInDKK()
         {
             rateDK = 1 / value * _DKK;
