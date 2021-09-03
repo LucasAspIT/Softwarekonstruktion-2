@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BIZ;
+using ExchangeRates.UserControls;
 
 namespace ExchangeRates
 {
@@ -22,6 +23,7 @@ namespace ExchangeRates
     public partial class MainWindow : Window
     {
         ClassBIZ BIZ;
+        UserControlValuta UCV;
 
         /// <summary>
         /// InitializeComponent() er et kald til metoden i classen Window som bygger brugergrænsefladen til noget der kan grafisk vises på en skærm.
@@ -35,7 +37,8 @@ namespace ExchangeRates
         {
             InitializeComponent();
             BIZ = new ClassBIZ();
-            MainGrid.DataContext = BIZ;
+            UCV = new UserControlValuta(BIZ);
+            MainGrid.Children.Add(UCV);
         }
     }
 }
