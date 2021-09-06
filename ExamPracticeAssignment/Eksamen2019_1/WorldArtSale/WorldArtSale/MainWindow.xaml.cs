@@ -39,8 +39,8 @@ namespace GUI
 
             GridBottom.Children.Add(userControlExchangerates);
             GridTopLeft.Children.Add(userControlCostumer);
-            GridTopRight.Children.Add(userControlAuctionItem);
-            GridTopMiddle.Children.Add(userControlBidCalculation);
+            GridTopRight.Children.Add(userControlBidCalculation);
+            GridTopMiddle.Children.Add(userControlAuctionItem);
         }
     }
 }
