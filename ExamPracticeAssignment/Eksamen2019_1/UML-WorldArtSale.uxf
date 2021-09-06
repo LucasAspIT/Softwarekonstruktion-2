@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <help_text/>
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>222</x>
+      <y>219</y>
+      <w>84</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>*GUI*
+--
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>333</x>
+      <y>219</y>
+      <w>135</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>*BIZ*
+--
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>522</x>
+      <y>60</y>
+      <w>156</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes>*IO*
+--
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>228</x>
+      <y>408</y>
+      <w>660</w>
+      <h>339</h>
+    </coordinates>
+    <panel_attributes>*Repository*
+--
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>255</x>
+      <y>237</y>
+      <w>30</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>MainWindow
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>246</x>
+      <y>264</y>
+      <w>54</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>UserControlAuctionItem
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>246</x>
+      <y>279</y>
+      <w>54</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>UserControlBidCalculation
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>246</x>
+      <y>294</y>
+      <w>54</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>UserControlCostumer
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>246</x>
+      <y>309</y>
+      <w>54</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>UserControlExchangerates
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>246</x>
+      <y>324</y>
+      <w>54</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>UserControlAuctionItemEdit
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>345</x>
+      <y>231</y>
+      <w>105</w>
+      <h>111</h>
+    </coordinates>
+    <panel_attributes>*ClassBIZ*
+--
+ - _classCurrency: ClassCurrency
+ - _listCustomer: List&lt;ClassCustomer&gt;
+ - _classCustomer: ClassCustomer
+ - _classArt: ClassArt
+ - _listClassArt: List&lt;ClassArt&gt;
+
+ &lt;&lt;property&gt;&gt; + classCurrency: ClassCurrency
+ &lt;&lt;property&gt;&gt; + listCustomer: List&lt;ClassCustomer&gt;
+ &lt;&lt;property&gt;&gt; + classCustomer: ClassCustomer
+ &lt;&lt;property&gt;&gt; + classArt: ClassArt
+ &lt;&lt;property&gt;&gt; + listClassArt: List&lt;ClassArt&gt;
+--
+ + async StartCurrencyApiCall() Task
+ - GetAllCurrencyIdAndNames() void
+--
+Responsibilities
+*Denne class har til opgave at implementere applikationens*
+*funktionalitet med GUI og eksterne enheder.*
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>81</y>
+      <w>120</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>*ClassCallWebAPI*
+--
+ 
+--
+ + async GetURLContentsAsync(string) Task&lt;byte[]&gt;
+--
+Responsibilities
+*Denne class har til opgave at holde metoden til*
+*en async metode til at data fra et Web-API*
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>543</x>
+      <y>138</y>
+      <w>120</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>*ClassFileIO*
+--
+ 
+--
+ + ReadDataFromCurrencyFile() Dictionary&lt;string, string&gt;
+--
+Responsibilities
+*Denne class har til opgave at holde metoden til*
+*at hente data fra .csv fil og returnere data i *
+*et Dictionary*
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>543</x>
+      <y>198</y>
+      <w>120</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>*ClassDbCon*
+--
+ - connectionString: string
+ - con: SqlConnection
+ - command: SqlCommand
+--
+ # SetCon(string) void
+ # OpenDB() void
+ # CloseDB() void
+ # ExecuteNonQuery(string) int
+ # DbReturnDataTable(string) DataTable
+--
+Responsibilities
+*Denne class har til opgave at give adgang til*
+*databasen*
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>543</x>
+      <y>282</y>
+      <w>120</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>*ClassWorldArtSaleDB*
+--
+ 
+--
+ + GetAllCustomerFromDB(ClassCurrency) List&lt;ClassCustomer&gt;
+ + GetAllArtFromDB() List&lt;ClassArt&gt;
+--
+Responsibilities
+*Denne class har til opgave at holde de metoder*
+*der sender en passende query til databasen og*
+*returnere et passende datasæt*
+**
+*Construktoren skal lave et kald til metoden SetCon*
+*med en parameter der indeholder de nødvendige data*
+*for at skabe kontakt til databasen*
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>237</x>
+      <y>438</y>
+      <w>126</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>*ClassArt*
+--
+ - _artID: string
+ - _picturePath: string
+ - _pictureDescription: string
+ - _pictureTitel: string
+
+ &lt;&lt;property&gt;&gt; + artID: string
+ &lt;&lt;property&gt;&gt; + picturePathustomer: string
+ &lt;&lt;property&gt;&gt; + pictureDescription: string
+ &lt;&lt;property&gt;&gt; + pictureTitel: string
+--
+ 
+--
+Responsibilities
+*Denne class har til opgave at agere simpel datatype*
+*der kan repræsentere data der knytter sig til kunst*
+*som er sat til salg*
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>423</x>
+      <y>429</y>
+      <w>126</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>*ClassCurrency*
+--
+ - _USD: string
+ - _EUR: string
+ - _RUB: string
+ - _KWD: string
+ - _BHD: string
+ - _OMR: string
+ - _JOD: string
+ - _GBP: string
+ - _KYD: string
+ - _CHF: string
+ - _CAD: string
+ - _AUD: string
+ - _AZN: string
+ - _BRL: string
+ - _HKD: string
+ - _currencyIdName: Dictionary&lt;string, string&gt;
+ - _rates: Dictionary&lt;string, decimal&gt;
+
+ &lt;&lt;property&gt;&gt; + USD: string
+ &lt;&lt;property&gt;&gt; + EUR: string
+ &lt;&lt;property&gt;&gt; + RUB: string
+ &lt;&lt;property&gt;&gt; + KWD: string
+ &lt;&lt;property&gt;&gt; + BHD: string
+ &lt;&lt;property&gt;&gt; + OMR: string
+ &lt;&lt;property&gt;&gt; + JOD: string
+ &lt;&lt;property&gt;&gt; + GBP: string
+ &lt;&lt;property&gt;&gt; + KYD: string
+ &lt;&lt;property&gt;&gt; + CHF: string
+ &lt;&lt;property&gt;&gt; + CAD: string
+ &lt;&lt;property&gt;&gt; + AUD: string
+ &lt;&lt;property&gt;&gt; + AZN: string
+ &lt;&lt;property&gt;&gt; + BRL: string
+ &lt;&lt;property&gt;&gt; + HKD: string
+ &lt;&lt;property&gt;&gt; + currencyIdName: Dictionary&lt;string, string&gt;
+ &lt;&lt;property&gt;&gt; + rates: Dictionary&lt;string, decimal&gt;
+--
+ - SetValutaValueInProperty() void
+--
+Responsibilities
+*Denne class har til opgave at agere simpel datatype*
+*der kan repræsentere data der knytter sig til udvalgte*
+*valutaer og en liste med alle valutaer, samt en liste med*
+*angivelse af alle valuta ID og tilhørende landenavn*
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>735</x>
+      <y>438</y>
+      <w>126</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>*ClassSalesValue*
+--
+ - _bidUSD: string
+ - _bidEUR: string
+ - _bidOwnValuta: string
+ - _priceWithFeeUSD: string
+ - -priceWithFeeEUR: string
+ - _priceWithFeeOwnValuta: string
+ - _classCurrency: ClassCurrency
+
+ &lt;&lt;property&gt;&gt; + bidUSD: string
+ &lt;&lt;property&gt;&gt; + bidEUR: string
+ &lt;&lt;property&gt;&gt; + bidOwnValuta: string
+ &lt;&lt;property&gt;&gt; + priceWithFeeUSD: string
+ &lt;&lt;property&gt;&gt; + priceWithFeeEUR: string
+ &lt;&lt;property&gt;&gt; + priceWithFeeOwnValuta: string
+ &lt;&lt;property&gt;&gt; + classCurrency: ClassCurrency
+--
+ 
+--
+Responsibilities
+*Denne class har til opgave at agere simpel datatype*
+*der kan repræsentere data der knytter sig til det angivne*
+*bud med de tre typer valutaer, samt en metode til at*
+*udregne hvad er i henholdsvis EUR og kundens valgte valuta*
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>585</x>
+      <y>435</y>
+      <w>126</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>*ClassCustomer*
+--
+ - _costumerID: int
+ - _name: string
+ - _address: string
+ - _zipCity: string
+ - _country: string
+ - _email: string
+ - _phoneNo: string
+ - _costumerCurrencyID: string
+
+ &lt;&lt;property&gt;&gt; + costumerID: int
+ &lt;&lt;property&gt;&gt; + name: string
+ &lt;&lt;property&gt;&gt; + address: string
+ &lt;&lt;property&gt;&gt; + zipCity: string
+ &lt;&lt;property&gt;&gt; + country: string
+ &lt;&lt;property&gt;&gt; + email: string
+ &lt;&lt;property&gt;&gt; + phoneNo: string
+ &lt;&lt;property&gt;&gt; + costumerCurrencyID: string
+--
+ 
+--
+Responsibilities
+*Denne class har til opgave at agere simpel datatype*
+*der kan repræsentere data der knytter sig til*
+*en kunde*
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>735</x>
+      <y>579</y>
+      <w>90</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>*Mappe: DataFiles*
+
+Fil: CurrencyIdName.csv
+
+--
+Responsibilities
+*Denne mappe indeholder de data-filer*
+*som skal benyttes i programmet*
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>474</x>
+      <y>678</y>
+      <w>126</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>*ClassNotify : INotifyPropertyChanged*
+--
+  + event PropertyChanged: PropertyChangedEventHandler
+--
+  # Notify(string) void
+--
+Responsibilities
+*Denne class har til opgave at give adgang til*
+*interfacet INotifyPropertyChanged gennem*
+*metoden Notify*
+layer=2
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>519</y>
+      <w>195</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>630.0;530.0;630.0;480.0;10.0;480.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>375</x>
+      <y>339</y>
+      <w>126</w>
+      <h>345</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>400.0;1130.0;400.0;1050.0;10.0;1050.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>498</x>
+      <y>636</y>
+      <w>9</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>708</x>
+      <y>480</y>
+      <w>33</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>513</x>
+      <y>555</y>
+      <w>276</w>
+      <h>129</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;410.0;10.0;340.0;420.0;340.0;420.0;40.0;900.0;40.0;900.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>303</x>
+      <y>288</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>261</x>
+      <y>348</y>
+      <w>9</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>273</x>
+      <y>351</y>
+      <w>87</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;40.0;270.0;40.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>285</x>
+      <y>363</y>
+      <w>318</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;50.0;1040.0;50.0;1040.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>237</x>
+      <y>249</y>
+      <w>24</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>30.0;70.0;10.0;70.0;10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>234</x>
+      <y>246</y>
+      <w>27</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;120.0;10.0;120.0;10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>231</x>
+      <y>243</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>50.0;180.0;10.0;180.0;10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>228</x>
+      <y>240</y>
+      <w>33</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>60.0;250.0;10.0;250.0;10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>225</x>
+      <y>237</y>
+      <w>36</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>70.0;310.0;10.0;310.0;10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>282</x>
+      <y>243</y>
+      <w>69</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>447</x>
+      <y>105</y>
+      <w>99</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>310.0;10.0;110.0;10.0;110.0;520.0;10.0;520.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>447</x>
+      <y>156</y>
+      <w>102</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>320.0;10.0;130.0;10.0;130.0;370.0;10.0;370.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>447</x>
+      <y>297</y>
+      <w>102</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>320.0;100.0;130.0;100.0;130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>465</x>
+      <y>279</y>
+      <w>63</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>405</x>
+      <y>339</y>
+      <w>87</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>270.0;300.0;270.0;200.0;10.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>423</x>
+      <y>339</y>
+      <w>219</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>710.0;320.0;710.0;170.0;10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>591</x>
+      <y>264</y>
+      <w>9</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+</diagram>
