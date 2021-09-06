@@ -37,10 +37,10 @@ namespace GUI
             userControlAuctionItem = new UserControlAuctionItem(BIZ);
             userControlBidCalculation = new UserControlBidCalculation(BIZ);
 
-            GridBottum.Children.Add(userControlExchangerates);
+            GridBottom.Children.Add(userControlExchangerates);
             GridTopLeft.Children.Add(userControlCostumer);
             GridTopRight.Children.Add(userControlAuctionItem);
-            GridTopMiddel.Children.Add(userControlBidCalculation);
+            GridTopMiddle.Children.Add(userControlBidCalculation);
         }
     }
 }

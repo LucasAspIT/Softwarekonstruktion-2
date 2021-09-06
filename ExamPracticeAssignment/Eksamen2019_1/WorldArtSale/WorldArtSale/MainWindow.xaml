@@ -23,7 +23,7 @@
               Grid.Column="0"
               Grid.Row="0"
               Margin="0" />
-        <Grid x:Name="GridTopMiddel"
+        <Grid x:Name="GridTopMiddle"
               Grid.Column="1"
               Grid.Row="0"
               Margin="0" />
@@ -31,7 +31,7 @@
               Grid.Column="2"
               Grid.Row="0"
               Margin="0" />
-        <Grid x:Name="GridBottum"
+        <Grid x:Name="GridBottom"
               Grid.Column="0"
               Grid.Row="1"
               Grid.ColumnSpan="3"              
