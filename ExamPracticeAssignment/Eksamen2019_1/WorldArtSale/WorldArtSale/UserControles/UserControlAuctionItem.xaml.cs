@@ -22,10 +22,20 @@ namespace GUI
     public partial class UserControlAuctionItem : UserControl
     {
         ClassBIZ BIZ;
-        public UserControlAuctionItem(ClassBIZ inBIZ)
+        Grid motherGrid;
+        UserControlAuctionItemEdit UCEdit;
+
+        public UserControlAuctionItem(ClassBIZ inBIZ, Grid inGrid, UserControlAuctionItemEdit inUC)
         {
             InitializeComponent();
             BIZ = inBIZ;
+            motherGrid = inGrid;
+            UCEdit = inUC;
+        }
+
+        private void AddNewArtToDB_Click(object sender, RoutedEventArgs e)
+        {
+            motherGrid.Children.Add(UCEdit);
         }
     }
 }

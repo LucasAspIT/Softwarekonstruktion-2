@@ -37,6 +37,7 @@
                 HorizontalAlignment="Stretch"
                 Margin="3"
                 Grid.Row="3"
-                VerticalAlignment="Stretch" />
+                VerticalAlignment="Stretch"
+                Click="AddNewArtToDB_Click" />
     </Grid>
 </UserControl>
