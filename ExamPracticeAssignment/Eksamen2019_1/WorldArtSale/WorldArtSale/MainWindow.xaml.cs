@@ -21,20 +21,23 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        ClassBIZ BIZ;
+
         UserControlExchangerates userControlExchangerates;
         UserControlCostumer userControlCostumer;
         UserControlAuctionItem userControlAuctionItem;
         UserControlBidCalculation userControlBidCalculation;
-        ClassBIZ BIZ;
+        UserControlAuctionItemEdit userControlAuctionItemEdit;
 
         public MainWindow()
         {
             InitializeComponent();
             BIZ = new ClassBIZ();
 
+            userControlAuctionItemEdit = new UserControlAuctionItemEdit(BIZ, GridTopMiddle);
             userControlExchangerates = new UserControlExchangerates(BIZ);
             userControlCostumer = new UserControlCostumer(BIZ);
-            userControlAuctionItem = new UserControlAuctionItem(BIZ);
+            userControlAuctionItem = new UserControlAuctionItem(BIZ, GridTopMiddle, userControlAuctionItemEdit);
             userControlBidCalculation = new UserControlBidCalculation(BIZ);
 
             GridBottom.Children.Add(userControlExchangerates);
