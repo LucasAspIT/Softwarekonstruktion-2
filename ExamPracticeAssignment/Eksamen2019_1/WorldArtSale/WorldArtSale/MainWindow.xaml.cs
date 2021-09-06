@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BIZ;
 
 namespace GUI
 {
@@ -24,6 +25,7 @@ namespace GUI
         UserControlCostumer userControlCostumer = new UserControlCostumer();
         UserControlAuctionItem userControlAuctionItem = new UserControlAuctionItem();
         UserControlBidCalculation userControlBidCalculation = new UserControlBidCalculation();
+        ClassBIZ BIZ;
 
         public MainWindow()
         {
@@ -32,9 +34,8 @@ namespace GUI
             GridTopLeft.Children.Add(userControlCostumer);
             GridTopRight.Children.Add(userControlAuctionItem);
             GridTopMiddel.Children.Add(userControlBidCalculation);
-        }
 
-       
-       
+            BIZ = new ClassBIZ();
+        }
     }
 }
