@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BIZ;
 
 namespace GUI
 {
@@ -20,9 +21,11 @@ namespace GUI
     /// </summary>
     public partial class UserControlAuctionItem : UserControl
     {
-        public UserControlAuctionItem()
+        ClassBIZ BIZ;
+        public UserControlAuctionItem(ClassBIZ inBIZ)
         {
             InitializeComponent();
+            BIZ = inBIZ;
         }
     }
 }

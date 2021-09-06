@@ -21,21 +21,26 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        UserControlExchangerates userControlExchangerates = new UserControlExchangerates();
-        UserControlCostumer userControlCostumer = new UserControlCostumer();
-        UserControlAuctionItem userControlAuctionItem = new UserControlAuctionItem();
-        UserControlBidCalculation userControlBidCalculation = new UserControlBidCalculation();
+        UserControlExchangerates userControlExchangerates;
+        UserControlCostumer userControlCostumer;
+        UserControlAuctionItem userControlAuctionItem;
+        UserControlBidCalculation userControlBidCalculation;
         ClassBIZ BIZ;
 
         public MainWindow()
         {
             InitializeComponent();
+            BIZ = new ClassBIZ();
+
+            userControlExchangerates = new UserControlExchangerates(BIZ);
+            userControlCostumer = new UserControlCostumer(BIZ);
+            userControlAuctionItem = new UserControlAuctionItem(BIZ);
+            userControlBidCalculation = new UserControlBidCalculation(BIZ);
+
             GridBottum.Children.Add(userControlExchangerates);
             GridTopLeft.Children.Add(userControlCostumer);
             GridTopRight.Children.Add(userControlAuctionItem);
             GridTopMiddel.Children.Add(userControlBidCalculation);
-
-            BIZ = new ClassBIZ();
         }
     }
 }
