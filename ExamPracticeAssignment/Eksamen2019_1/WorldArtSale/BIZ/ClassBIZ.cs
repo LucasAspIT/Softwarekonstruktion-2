@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Repository;
+using IO;
+using Newtonsoft.Json;
+using System.Windows;
 
 namespace BIZ
 {
@@ -14,14 +17,21 @@ namespace BIZ
         private ClassCustomer _classCustomer;
         private ClassArt _classArt;
         private List<ClassArt> _listClassArt;
+        private ClassCustomer _fallbackCustomer;
+        private List<ClassCountry> _countryList;
+
+        private ClassCallWebAPI classCallWebAPI = new ClassCallWebAPI();
+        private ClassWorldArtSaleDB classWorldArtSaleDB = new ClassWorldArtSaleDB();
+
 
         public ClassBIZ()
         {
             _classCurrency = new ClassCurrency();
-            _listCustomer = new List<ClassCustomer>();
             _classCustomer = new ClassCustomer();
-            _classArt = new ClassArt();
-            _listClassArt = new List<ClassArt>();
+
+            listCustomer = classWorldArtSaleDB.GetAllCustomersFromDB();
+            countryList = classWorldArtSaleDB.GetAllCountriesFromDB();
+            
         }
 
 
@@ -33,11 +43,14 @@ namespace BIZ
                 if (_classCurrency != value)
                 {
                     _classCurrency = value;
+                    if (value.rates.Count > 0)
+                    {
+                        classCurrency.SetValutaValueInProperty();
+                    }
                 }
                 Notify("classCurrency");
             }
         }
-
 
         public List<ClassCustomer> listCustomer
         {
@@ -52,7 +65,6 @@ namespace BIZ
             }
         }
 
-
         public ClassCustomer classCustomer
         {
             get { return _classCustomer; }
@@ -65,7 +77,6 @@ namespace BIZ
                 Notify("classCustomer");
             }
         }
-
 
         public ClassArt classArt
         {
@@ -80,7 +91,6 @@ namespace BIZ
             }
         }
 
-
         public List<ClassArt> listClassArt
         {
             get { return _listClassArt; }
@@ -94,9 +104,51 @@ namespace BIZ
             }
         }
 
+        public ClassCustomer fallbackCustomer
+        {
+            get { return _fallbackCustomer; }
+            set
+            {
+                if (_fallbackCustomer != value)
+                {
+                    _fallbackCustomer = value;
+                    classCustomer = new ClassCustomer(value);
+                }
+                Notify("fallbackCustomer");
+            }
+        }
+
+        public List<ClassCountry> countryList
+        {
+            get { return _countryList; }
+            set
+            {
+                if (_countryList != value)
+                {
+                    _countryList = value;
+                }
+                Notify("countryList");
+            }
+        }
+
+
         public async Task StartCurrencyApiCall()
         {
+            try
+            {
+                while (true)
+                {
+                    // GetURLContents returns the contents of a url as a byte array.
+                    string strJson = await classCallWebAPI.GetURLContentsAsync("https://openexchangerates.org/api/latest.json?app_id=3737daa413d14a59bf5738d0e6707c21&base=USD");
 
+                    classCurrency = JsonConvert.DeserializeObject<ClassCurrency>(strJson);
+                    await Task.Delay(60000);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void GetAllCurrencyIdAndNames()
