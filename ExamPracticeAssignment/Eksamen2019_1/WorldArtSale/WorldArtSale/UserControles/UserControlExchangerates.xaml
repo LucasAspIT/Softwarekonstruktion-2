@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:GUI"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="1000">
-    <Grid Background="LightGray" ShowGridLines="False" >
+    <Grid x:Name="MainGrid" Background="LightGray" ShowGridLines="False" >
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50" />
@@ -31,7 +31,7 @@
         <Label x:Name="labelUSD"
                Grid.Column="1"
                Grid.Row="0"
-               Content="0,0000"
+               Content="{Binding classCurrency.USD}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5"/>
@@ -41,7 +41,7 @@
         <Label x:Name="labelEUR"
                Grid.Column="1"
                Grid.Row="1"
-               Content="0,0000"
+               Content="{Binding classCurrency.EUR}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -51,7 +51,7 @@
         <Label x:Name="labelRUB"
                Grid.Column="1"
                Grid.Row="2"
-               Content="0,0000"
+               Content="{Binding classCurrency.RUB}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -61,7 +61,7 @@
         <Label x:Name="labelKWD"
                Grid.Column="3"
                Grid.Row="0"
-               Content="0,0000"
+               Content="{Binding classCurrency.KWD}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -71,7 +71,7 @@
         <Label x:Name="labelBHD"
                Grid.Column="3"
                Grid.Row="1"
-               Content="0,0000"
+               Content="{Binding classCurrency.BHD}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -81,7 +81,7 @@
         <Label x:Name="labelOMR"
                Grid.Column="3"
                Grid.Row="2"
-               Content="0,0000"
+               Content="{Binding classCurrency.OMR}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -91,7 +91,7 @@
         <Label x:Name="labelJOD"
                Grid.Column="5"
                Grid.Row="0"
-               Content="0,0000"
+               Content="{Binding classCurrency.JOD}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -101,7 +101,7 @@
         <Label x:Name="labelGBP"
                Grid.Column="5"
                Grid.Row="1"
-               Content="0,0000"
+               Content="{Binding classCurrency.GBP}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -111,7 +111,7 @@
         <Label x:Name="labelKYD"
                Grid.Column="5"
                Grid.Row="2"
-               Content="0,0000"
+               Content="{Binding classCurrency.KYD}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -121,7 +121,7 @@
         <Label x:Name="labelCHF"
                Grid.Column="7"
                Grid.Row="0"
-               Content="0,0000"
+               Content="{Binding classCurrency.CHF}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -131,7 +131,7 @@
         <Label x:Name="labelCAD"
                Grid.Column="7"
                Grid.Row="1"
-               Content="0,0000"
+               Content="{Binding classCurrency.CAD}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -141,7 +141,7 @@
         <Label x:Name="labelAUD"
                Grid.Column="7"
                Grid.Row="2"
-               Content="0,0000"
+               Content="{Binding classCurrency.AUD}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -151,7 +151,7 @@
         <Label x:Name="labelAZN"
                Grid.Column="9"
                Grid.Row="0"
-               Content="0,0000"
+               Content="{Binding classCurrency.AZN}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -161,7 +161,7 @@
         <Label x:Name="labelBRL"
                Grid.Column="9"
                Grid.Row="1"
-               Content="0,0000"
+               Content="{Binding classCurrency.BRL}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
@@ -171,7 +171,7 @@
         <Label x:Name="labelHKD"
                Grid.Column="9"
                Grid.Row="2"
-               Content="0,0000"
+               Content="{Binding classCurrency.HKD}"
                FontFamily="Lucida Console"
                HorizontalContentAlignment="Left"
                Margin="5,5,5,5" />
