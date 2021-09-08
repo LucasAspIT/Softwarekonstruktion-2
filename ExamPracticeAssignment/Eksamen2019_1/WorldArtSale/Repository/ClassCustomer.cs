@@ -16,19 +16,37 @@ namespace Repository
         private string _email;
         private string _phoneNo;
         private string _customerCurrencyID;
+        private string _maxBid;
+        private ClassCountry _classCountry;
+
 
         public ClassCustomer()
         {
-            _customerID = 0;
-            _name = "";
-            _address = "";
-            _zipCity = "";
-            _country = "";
-            _email = "";
-            _phoneNo = "";
-            _customerCurrencyID = "";
+            customerID = 0;
+            name = "";
+            address = "";
+            zipCity = "";
+            country = "";
+            email = "";
+            phoneNo = "";
+            customerCurrencyID = "";
+            maxBid = "";
+            classCountry = new ClassCountry();
         }
 
+        public ClassCustomer(ClassCustomer inCustomer)
+        {
+            customerID = inCustomer.customerID;
+            name = inCustomer.name;
+            address = inCustomer.address;
+            zipCity = inCustomer.zipCity;
+            country = inCustomer.country;
+            email = inCustomer.email;
+            phoneNo = inCustomer.phoneNo;
+            maxBid = inCustomer.maxBid;
+            customerCurrencyID = inCustomer.customerCurrencyID;
+            classCountry = new ClassCountry(inCustomer.classCountry);
+        }
 
         public int customerID
         {
@@ -43,7 +61,6 @@ namespace Repository
             }
         }
 
-
         public string name
         {
             get { return _name; }
@@ -56,7 +73,6 @@ namespace Repository
                 Notify("name");
             }
         }
-
 
         public string address
         {
@@ -71,7 +87,6 @@ namespace Repository
             }
         }
 
-
         public string zipCity
         {
             get { return _zipCity; }
@@ -84,7 +99,6 @@ namespace Repository
                 Notify("zipCity");
             }
         }
-
 
         public string country
         {
@@ -99,7 +113,6 @@ namespace Repository
             }
         }
 
-
         public string email
         {
             get { return _email; }
@@ -112,7 +125,6 @@ namespace Repository
                 Notify("email");
             }
         }
-
 
         public string phoneNo
         {
@@ -127,7 +139,6 @@ namespace Repository
             }
         }
 
-
         public string customerCurrencyID
         {
             get { return _customerCurrencyID; }
@@ -141,5 +152,30 @@ namespace Repository
             }
         }
 
+        public string maxBid
+        {
+            get { return _maxBid; }
+            set
+            {
+                if (_maxBid != value)
+                {
+                    _maxBid = value;
+                }
+                Notify("maxBid");
+            }
+        }
+
+        public ClassCountry classCountry
+        {
+            get { return _classCountry; }
+            set
+            {
+                if (_classCountry != value)
+                {
+                    _classCountry = value;
+                }
+                Notify("classCountry");
+            }
+        }
     }
 }
