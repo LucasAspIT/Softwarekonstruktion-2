@@ -45,5 +45,10 @@ namespace GUI
             GridTopRight.Children.Add(userControlBidCalculation);
             GridTopMiddle.Children.Add(userControlAuctionItem);
         }
+
+        private async void StartJasonUpdate(object sender, RoutedEventArgs e)
+        {
+            await BIZ.StartCurrencyApiCall();
+        }
     }
 }
