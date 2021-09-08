@@ -27,6 +27,7 @@ namespace GUI
         {
             InitializeComponent();
             BIZ = inBIZ;
+            GridCostumer.DataContext = BIZ;
         }
     }
 }
