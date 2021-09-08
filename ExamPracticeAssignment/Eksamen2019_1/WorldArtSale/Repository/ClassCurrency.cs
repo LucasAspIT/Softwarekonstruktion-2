@@ -285,9 +285,24 @@ namespace Repository
             }
         }
 
-        private void SetValutaValueInProperty()
+        public void SetValutaValueInProperty()
         {
-
+            decimal KRkurs = rates["DKK"];
+            USD = (1 / rates["USD"] * KRkurs).ToString("##0.0000");
+            EUR = (1 / rates["EUR"] * KRkurs).ToString("##0.0000");
+            RUB = (1 / rates["RUB"] * KRkurs).ToString("##0.0000");
+            KWD = (1 / rates["KWD"] * KRkurs).ToString("##0.0000");
+            BHD = (1 / rates["BHD"] * KRkurs).ToString("##0.0000");
+            OMR = (1 / rates["OMR"] * KRkurs).ToString("##0.0000");
+            JOD = (1 / rates["JOD"] * KRkurs).ToString("##0.0000");
+            GBP = (1 / rates["GBP"] * KRkurs).ToString("##0.0000");
+            KYD = (1 / rates["KYD"] * KRkurs).ToString("##0.0000");
+            CHF = (1 / rates["CHF"] * KRkurs).ToString("##0.0000");
+            CAD = (1 / rates["CAD"] * KRkurs).ToString("##0.0000");
+            AUD = (1 / rates["AUD"] * KRkurs).ToString("##0.0000");
+            AZN = (1 / rates["AZN"] * KRkurs).ToString("##0.0000");
+            BRL = (1 / rates["BRL"] * KRkurs).ToString("##0.0000");
+            HKD = (1 / rates["HKD"] * KRkurs).ToString("##0.0000");
         }
     }
 }
