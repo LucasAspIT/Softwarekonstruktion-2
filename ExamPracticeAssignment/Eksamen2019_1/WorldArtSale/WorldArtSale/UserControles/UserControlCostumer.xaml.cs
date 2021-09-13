@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BIZ;
+using Repository;
 
 namespace GUI
 {
@@ -28,6 +29,48 @@ namespace GUI
             InitializeComponent();
             BIZ = inBIZ;
             GridCostumer.DataContext = BIZ;
+        }
+
+        private void buttonNewCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            OpenAllTextBoxForEdit();
+            BIZ.classCustomer = new ClassCustomer();
+        }
+
+        private void OpenAllTextBoxForEdit()
+        {
+            textBoxName.IsReadOnly = false;
+            textBoxAddress.IsReadOnly = false;
+            textBoxZipCity.IsReadOnly = false;
+            textBoxCountry.IsReadOnly = false;
+            textBoxMail.IsReadOnly = false;
+            textBoxPhone.IsReadOnly = false;
+            textBoxMaxBid.IsReadOnly = false;
+            buttonCreateUpdate.Visibility = Visibility.Visible;
+            buttonCancel.Visibility = Visibility.Visible;
+            buttonNewCustomer.Visibility = Visibility.Hidden;
+            buttonEditCustomer.Visibility = Visibility.Hidden;
+        }
+
+        private void CloseAllTextBoxForEdit()
+        {
+            textBoxName.IsReadOnly = true;
+            textBoxAddress.IsReadOnly = true;
+            textBoxZipCity.IsReadOnly = true;
+            textBoxCountry.IsReadOnly = true;
+            textBoxMail.IsReadOnly = true;
+            textBoxPhone.IsReadOnly = true;
+            textBoxMaxBid.IsReadOnly = true;
+            buttonCreateUpdate.Visibility = Visibility.Hidden;
+            buttonCancel.Visibility = Visibility.Hidden;
+            buttonNewCustomer.Visibility = Visibility.Visible;
+            buttonEditCustomer.Visibility = Visibility.Visible;
+        }
+
+        private void buttonCreateUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            BIZ.SaveCustomerToDB();
+            CloseAllTextBoxForEdit();
         }
     }
 }
