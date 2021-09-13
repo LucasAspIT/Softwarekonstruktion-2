@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,6 +83,81 @@ namespace IO
             List<ClassArt> res = new List<ClassArt>();
 
             return res;
+        }
+
+        public void SaveCustomerInDB(ClassCustomer inClassCustomer)
+        {
+            string sqlQuery = "INSERT INTO Customer (name, address, zipCity, country, email, phone, maximumBid, preferredCurrency) " +
+                "VALUES (@name, @address, @zipCity, @country, @email, @phone, @maximumBid, @preferredCurrency)";
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
+                {
+                    cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = inClassCustomer.name;
+                    cmd.Parameters.Add("@address", SqlDbType.NVarChar).Value = inClassCustomer.address;
+                    cmd.Parameters.Add("@zipCity", SqlDbType.NVarChar).Value = inClassCustomer.zipCity;
+                    cmd.Parameters.Add("@country", SqlDbType.NVarChar).Value = inClassCustomer.country;
+                    cmd.Parameters.Add("@email", SqlDbType.NVarChar).Value = inClassCustomer.email;
+                    cmd.Parameters.Add("@phone", SqlDbType.NVarChar).Value = inClassCustomer.phoneNo;
+                    cmd.Parameters.Add("@maximumBid", SqlDbType.Money).Value = inClassCustomer.maxBid;
+                    cmd.Parameters.Add("@preferredCurrency", SqlDbType.Int).Value = inClassCustomer.customerCurrencyID;
+
+                    OpenDB();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                CloseDB();
+            }
+        }
+
+        public void UpdateCustomerInDB(ClassCustomer inClassCustomer)
+        {
+            string sqlQuery = "UPDATE Customer SET " +
+                "name = @name, " +
+                "address = @address, " +
+                "zipCity = @zipCity, " +
+                "country = @country, " +
+                "email = @email, " +
+                "phone = @phone, " +
+                "maximumBid = @maximumBid, " +
+                "preferredCurrency = @preferredCurrency " +
+                "WHERE id = @id";
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
+                {
+                    cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = inClassCustomer.name;
+                    cmd.Parameters.Add("@address", SqlDbType.NVarChar).Value = inClassCustomer.address;
+                    cmd.Parameters.Add("@zipCity", SqlDbType.NVarChar).Value = inClassCustomer.zipCity;
+                    cmd.Parameters.Add("@country", SqlDbType.NVarChar).Value = inClassCustomer.country;
+                    cmd.Parameters.Add("@email", SqlDbType.NVarChar).Value = inClassCustomer.email;
+                    cmd.Parameters.Add("@phone", SqlDbType.NVarChar).Value = inClassCustomer.phoneNo;
+                    cmd.Parameters.Add("@maximumBid", SqlDbType.Money).Value = inClassCustomer.maxBid;
+                    cmd.Parameters.Add("@preferredCurrency", SqlDbType.Int).Value = inClassCustomer.customerCurrencyID;
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = inClassCustomer.customerID;
+
+                    OpenDB();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                CloseDB();
+            }
         }
     }
 }
