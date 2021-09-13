@@ -155,5 +155,26 @@ namespace BIZ
         {
 
         }
+
+        public void SaveCustomerToDB()
+        {
+            try
+            {
+                if (classCustomer.customerID == 0)
+                {
+                    classWorldArtSaleDB.SaveCustomerInDB(classCustomer);
+                }
+                else
+                {
+                    classWorldArtSaleDB.UpdateCustomerInDB(classCustomer);
+                }
+                listCustomer = classWorldArtSaleDB.GetAllCustomersFromDB();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
