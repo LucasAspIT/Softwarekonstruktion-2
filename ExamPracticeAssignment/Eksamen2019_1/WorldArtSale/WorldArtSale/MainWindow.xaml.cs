@@ -34,7 +34,7 @@ namespace GUI
             InitializeComponent();
             BIZ = new ClassBIZ();
 
-            userControlAuctionItemEdit = new UserControlAuctionItemEdit(BIZ, GridTopMiddle);
+            userControlAuctionItemEdit = new UserControlAuctionItemEdit(BIZ, GridTopMiddle); // Initialised before 'userControlAuctionItem' so it can be used in the parameter
             userControlExchangerates = new UserControlExchangerates(BIZ);
             userControlCostumer = new UserControlCostumer(BIZ);
             userControlAuctionItem = new UserControlAuctionItem(BIZ, GridTopMiddle, userControlAuctionItemEdit);
