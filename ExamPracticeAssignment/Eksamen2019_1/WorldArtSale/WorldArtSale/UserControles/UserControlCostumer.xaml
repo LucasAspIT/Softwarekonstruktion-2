@@ -53,8 +53,7 @@
                       IsReadOnly="True"
                       Text="Vælg kunde"
                       Margin="10,6,3,6"
-                      VerticalAlignment="Stretch"
-                      SelectionChanged="ComboBox_SelectionChanged_1" />
+                      VerticalAlignment="Stretch" />
             <Label Grid.ColumnSpan="2"
                    Content="Navn:"
                    HorizontalAlignment="Stretch"
@@ -248,8 +247,7 @@
                     HorizontalAlignment="Stretch"
                     Margin="5"
                     Grid.Row="2"
-                    VerticalAlignment="Stretch"
-                    Click="ButtonEditCustomer_Click" />
+                    VerticalAlignment="Stretch" />
             <Button x:Name="buttonCreateUpdate"
                     Visibility="Visible"
                     Grid.ColumnSpan="3"
@@ -269,8 +267,7 @@
                     HorizontalAlignment="Stretch"
                     Margin="5,5,5,5"
                     Grid.Row="4"
-                    VerticalAlignment="Stretch"
-                    Click="ButtonCancel_Click" />
+                    VerticalAlignment="Stretch" />
         </Grid>
 
     </Grid>
