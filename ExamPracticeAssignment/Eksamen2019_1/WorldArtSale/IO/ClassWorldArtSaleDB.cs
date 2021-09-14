@@ -25,8 +25,7 @@ namespace IO
                 "Customer.zipCity, Customer.country, Customer.email, Customer.phone, Customer.maximumBid, " +
                 "Customer.preferredCurrency, Country.code, Country.countryName, Country.valutaName " +
                 "FROM Country RIGHT OUTER JOIN " +
-                "Customer ON Country.id = Customer.preferredCurrency " +
-                "WHERE(Customer.isActive = 1)");
+                "Customer ON Country.id = Customer.preferredCurrency");
 
             foreach (DataRow row in dataTable.Rows)
             {
@@ -80,9 +79,29 @@ namespace IO
 
         public List<ClassArt> GetAllArtFromDB()
         {
-            List<ClassArt> res = new List<ClassArt>();
+            List<ClassArt> listArt = new List<ClassArt>();
 
-            return res;
+            try
+            {
+                DataTable dataTable = DbReturnDataTable("SELECT * FROM ArtTable");
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    ClassArt classArt = new ClassArt();
+                    classArt.artID = row["id"].ToString();
+
+                    classArt.pictureTitle = row["titel"].ToString();
+                    classArt.pictureDescription = row["description"].ToString();
+                    classArt.picturePath = row["picturePath"].ToString();
+
+                    listArt.Add(classArt);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return listArt;
         }
 
         public void SaveCustomerInDB(ClassCustomer inClassCustomer)
