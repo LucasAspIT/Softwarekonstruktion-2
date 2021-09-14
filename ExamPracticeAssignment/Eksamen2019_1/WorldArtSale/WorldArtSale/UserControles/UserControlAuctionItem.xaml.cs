@@ -31,6 +31,7 @@ namespace GUI
             BIZ = inBIZ;
             motherGrid = inGrid;
             UCEdit = inUC;
+            MainGrid.DataContext = BIZ;
         }
 
         private void AddNewArtToDB_Click(object sender, RoutedEventArgs e)
