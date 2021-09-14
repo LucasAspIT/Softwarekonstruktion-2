@@ -31,7 +31,7 @@ namespace BIZ
 
             listCustomer = classWorldArtSaleDB.GetAllCustomersFromDB();
             countryList = classWorldArtSaleDB.GetAllCountriesFromDB();
-            
+            listClassArt = classWorldArtSaleDB.GetAllArtFromDB();
         }
 
 
@@ -142,6 +142,7 @@ namespace BIZ
                     string strJson = await classCallWebAPI.GetURLContentsAsync("https://openexchangerates.org/api/latest.json?app_id=3737daa413d14a59bf5738d0e6707c21&base=USD");
 
                     classCurrency = JsonConvert.DeserializeObject<ClassCurrency>(strJson);
+
                     await Task.Delay(60000);
                 }
             }
