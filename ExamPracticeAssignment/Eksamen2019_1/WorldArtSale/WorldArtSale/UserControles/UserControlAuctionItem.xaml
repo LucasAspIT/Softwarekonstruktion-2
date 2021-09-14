@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              d:DesignHeight="511"
              d:DesignWidth="328">
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="36" />
             <RowDefinition Height="1*" />
@@ -17,21 +17,26 @@
         <Image HorizontalAlignment="Stretch"
                Margin="3"
                Grid.Row="1"
-               Source="C:\ImageSale\dsb1.jpg"
+               Source="{Binding classArt.picturePath}"
                VerticalAlignment="Stretch" />
         <TextBox HorizontalAlignment="Stretch"
                  Margin="5"
                  Grid.Row="2"
                  TextWrapping="Wrap"
                  AcceptsReturn="True"
-                 Text="Denne plakat er tegnet af den berømte tegner Mark Hulstrøm"
+                 Text="{Binding classArt.pictureDescription}"
                  FontFamily="Lucida Sans"
                  FontSize="12"
                  IsReadOnly="True"
                  VerticalAlignment="Stretch" />
         <ComboBox HorizontalAlignment="Stretch"
                   Margin="3"
-                  VerticalAlignment="Stretch"/>
+                  VerticalAlignment="Stretch"
+                  ItemsSource="{Binding listClassArt}"
+                  SelectedItem="{Binding classArt}"
+                  SelectedValue="{Binding listClassArt.pictureTitle}"
+                  SelectedValuePath="pictureTitle"
+                  DisplayMemberPath="pictureTitle" />
         <Button x:Name="AddNewArtToDB"
                 Content="Tilføj ny kunst til databasen"
                 HorizontalAlignment="Stretch"
