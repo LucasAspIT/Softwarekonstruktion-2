@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BIZ;
 
 namespace GUI
 {
@@ -20,9 +21,30 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        ClassBIZ BIZ;
+
+        Usercontrols.UserControlCustomer UCCustomer;
+        Usercontrols.UserControlOrderMeat UCOrderMeat;
+        Usercontrols.UserControlCustomerEdit UCCustomerEdit;
+        Usercontrols.UserControlMeatPriceUpdate UCMeatPriceUpdate;
+
         public MainWindow()
         {
             InitializeComponent();
+            BIZ = new ClassBIZ();
+
+            UCCustomerEdit = new Usercontrols.UserControlCustomerEdit(BIZ, LeftGrid);
+            UCCustomer = new Usercontrols.UserControlCustomer(BIZ, LeftGrid, UCCustomerEdit);
+            UCOrderMeat = new Usercontrols.UserControlOrderMeat(BIZ, RightGrid, UCMeatPriceUpdate);
+            UCMeatPriceUpdate = new Usercontrols.UserControlMeatPriceUpdate(BIZ, RightGrid);
+
+            LeftGrid.Children.Add(UCCustomer);
+            RightGrid.Children.Add(UCOrderMeat);
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // await BIZ.StartCurrencyApiCall();
         }
     }
 }

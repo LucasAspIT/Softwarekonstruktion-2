@@ -58,6 +58,12 @@
     <Compile Include="Usercontrols\UserControlCustomer.xaml.cs">
       <DependentUpon>UserControlCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Usercontrols\UserControlCustomerEdit.xaml.cs">
+      <DependentUpon>UserControlCustomerEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\UserControlMeatPriceUpdate.xaml.cs">
+      <DependentUpon>UserControlMeatPriceUpdate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrols\UserControlOrderMeat.xaml.cs">
       <DependentUpon>UserControlOrderMeat.xaml</DependentUpon>
     </Compile>
@@ -74,6 +80,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Usercontrols\UserControlCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Usercontrols\UserControlCustomerEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Usercontrols\UserControlMeatPriceUpdate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,6 +121,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BIZ\BIZ.csproj">
+      <Project>{77fbf7f0-782b-407b-904f-557a6a4a830a}</Project>
+      <Name>BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{6cfa16e7-cca0-4f44-a0b2-0a309bf9b925}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

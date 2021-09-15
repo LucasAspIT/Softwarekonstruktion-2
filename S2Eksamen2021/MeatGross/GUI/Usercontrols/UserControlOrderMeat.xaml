@@ -27,10 +27,12 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="1"
+            <Button x:Name="buttonUpdateMeatPriceAndStock"
+                    Grid.Column="1"
                     Grid.Row="0"
                     Content="Opdater kødpriser og beholdnng"
-                    Margin="3,9" />
+                    Margin="3,9"
+                    Click="buttonUpdateMeatPriceAndStock_Click" />
 
             <Label x:Name="labelMeatType"
                    Content="Vælg kød:"
@@ -47,11 +49,11 @@
                       Height="23"
                       Margin="5"
                       VerticalAlignment="Center"
-                      ItemsSource="{Binding }"
+                      ItemsSource="{Binding x}"
                       SelectedValuePath="TypeOfMeat"
                       DisplayMemberPath="TypeOfMeat"
-                      SelectedValue="{Binding }"
-                      SelectedItem="{Binding }" />
+                      SelectedValue="{Binding x}"
+                      SelectedItem="{Binding x}" />
 
 
             <Label Content="Pris pr. kg.:"
@@ -179,7 +181,7 @@
                     Margin="2,2,2,2"
                     VerticalAlignment="Center"
                     Width="180"
-                    FontSize="20" />
+                    FontSize="20" Click="buttonSellToCustomer_Click" />
 
         </Grid>
     </Grid>

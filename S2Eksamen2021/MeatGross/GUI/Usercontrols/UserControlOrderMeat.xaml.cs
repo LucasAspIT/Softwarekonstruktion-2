@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BIZ;
 
 namespace GUI.Usercontrols
 {
@@ -20,9 +21,33 @@ namespace GUI.Usercontrols
     /// </summary>
     public partial class UserControlOrderMeat : UserControl
     {
-        public UserControlOrderMeat()
+        ClassBIZ BIZ;
+        Grid gridLeft;
+        Grid gridRight;
+        UserControlMeatPriceUpdate UCMPU;
+
+        public UserControlOrderMeat(ClassBIZ inBIZ, Grid inGrid, UserControlMeatPriceUpdate inUC)
         {
             InitializeComponent();
+            BIZ = inBIZ;
+            gridRight = inGrid;
+            UCMPU = inUC;
+            MainGrid.DataContext = BIZ;
+        }
+
+        private void buttonSellToCustomer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonUpdateMeatPriceAndStock_Click(object sender, RoutedEventArgs e)
+        {
+            gridRight.Children.Add(UCMPU);
+        }
+
+        private void SaveCustomerData()
+        {
+
         }
     }
 }

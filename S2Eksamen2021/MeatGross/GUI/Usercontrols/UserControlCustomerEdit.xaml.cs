@@ -17,30 +17,39 @@ using BIZ;
 namespace GUI.Usercontrols
 {
     /// <summary>
-    /// Interaction logic for UserControlCustomer.xaml
+    /// Interaction logic for UserControlCustomerEdit.xaml
     /// </summary>
-    public partial class UserControlCustomer : UserControl
+    public partial class UserControlCustomerEdit : UserControl
     {
         ClassBIZ BIZ;
         Grid gridLeft;
         Grid gridRight;
-        UserControlCustomerEdit UCCE;
 
-        public UserControlCustomer(ClassBIZ inBIZ, Grid inGrid, UserControlCustomerEdit inUC)
+        public UserControlCustomerEdit(ClassBIZ inBIZ, Grid inGrid)
         {
             InitializeComponent();
             BIZ = inBIZ;
             gridLeft = inGrid;
-            UCCE = inUC;
-            MainGrid.DataContext = BIZ;
+            // MainGrid.DataContext = BIZ;
+
         }
 
-        private void buttonEditCustomer_Click(object sender, RoutedEventArgs e)
+        private void buttonSaveCustomer_Click(object sender, RoutedEventArgs e)
         {
-            gridLeft.Children.Add(UCCE);
+
         }
 
-        private void buttonNewCustomer_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Save nothing, and remove the overlaying UserControl.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonRegret_Click(object sender, RoutedEventArgs e)
+        {
+            gridLeft.Children.Remove(this);
+        }
+
+        private void SaveCustomerData()
         {
 
         }

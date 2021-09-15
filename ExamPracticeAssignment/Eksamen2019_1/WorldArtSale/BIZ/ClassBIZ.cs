@@ -26,8 +26,8 @@ namespace BIZ
 
         public ClassBIZ()
         {
-            _classCurrency = new ClassCurrency();
-            _classCustomer = new ClassCustomer();
+            classCurrency = new ClassCurrency();
+            classCustomer = new ClassCustomer();
 
             listCustomer = classWorldArtSaleDB.GetAllCustomersFromDB();
             countryList = classWorldArtSaleDB.GetAllCountriesFromDB();

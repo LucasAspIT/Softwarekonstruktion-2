@@ -8,6 +8,7 @@
         Title="Meat Gross" 
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
+        Loaded="Window_Loaded"
         Height="450" Width="875">
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
