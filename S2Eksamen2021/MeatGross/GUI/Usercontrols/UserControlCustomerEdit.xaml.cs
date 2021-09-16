@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BIZ;
+using Repository;
 
 namespace GUI.Usercontrols
 {
@@ -30,13 +31,14 @@ namespace GUI.Usercontrols
             InitializeComponent();
             BIZ = inBIZ;
             gridLeft = inGrid;
-            // MainGrid.DataContext = BIZ;
+            MainGrid.DataContext = BIZ;
 
         }
 
         private void buttonSaveCustomer_Click(object sender, RoutedEventArgs e)
         {
-
+            SaveCustomerData();
+            BIZ.SetUpListCustomer();
         }
 
         /// <summary>
@@ -51,7 +53,25 @@ namespace GUI.Usercontrols
 
         private void SaveCustomerData()
         {
-
+            try
+            {
+                if (BIZ.editOrNewCustomer.id == 0)
+                {
+                    BIZ.editOrNewCustomer.id = BIZ.SaveNewCustomer();
+                    BIZ.selectedCustomer = new ClassCustomer(BIZ.editOrNewCustomer);
+                    gridLeft.Children.Remove(this);
+                }
+                else
+                {
+                    BIZ.UpdateCustomer();
+                    BIZ.selectedCustomer = new ClassCustomer(BIZ.editOrNewCustomer);
+                    gridLeft.Children.Remove(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error: Adding/saving customer failed.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

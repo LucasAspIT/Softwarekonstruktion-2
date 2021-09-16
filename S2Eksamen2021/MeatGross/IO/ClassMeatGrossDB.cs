@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace IO
     {
         public ClassMeatGrossDB()
         {
-            SetCon(@"Server=(localdb)\MSSQLLocalDB;Database=MeatGross;Trusted_Connection=True;Connection Timeout=1");
+            SetCon(@"Server=(localdb)\MSSQLLocalDB;Database=MeatGross;Trusted_Connection=True;Connection Timeout=5");
         }
 
         /// <summary>
@@ -58,9 +59,26 @@ namespace IO
 
         public List<ClassCountry> GetAllCountriesFromDB()
         {
-            List<ClassCountry> temp = new List<ClassCountry>();
+            List<ClassCountry> listCountry = new List<ClassCountry>();
 
-            return temp;
+            DataTable dataTable = DbReturnDataTable("SELECT * FROM CountryAndRates");
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                ClassCountry classCountry = new ClassCountry();
+
+                classCountry.id = Convert.ToInt32(row["Id"]);
+                classCountry.countryCode = row["CountryCode"].ToString();
+                classCountry.countryName = row["CountryName"].ToString();
+                classCountry.valutaName = row["ValutaName"].ToString();
+
+                // valutaRate?
+                // updateTime?
+
+                listCountry.Add(classCountry);
+            }
+
+            return listCountry;
         }
 
         public List<ClassMeat> GetAllMeatFromDB()
@@ -70,16 +88,79 @@ namespace IO
             return temp;
         }
 
-        public int SaveNewCustomerInDB(ClassCustomer inCustomer)
+        public int SaveNewCustomerInDB(ClassCustomer inClassCustomer)
         {
-            int temp = 0;
+            int res = 0;
+            string sqlQuery = "INSERT INTO Customer (CompanyName, Address, ZipCity, Phone, Mail, ContactName, Country) " +
+                "VALUES (@CompanyName, @Address, @ZipCity, @Phone, @Mail, @ContactName, @Country) " +
+                "SELECT SCOPE_IDENTITY()";
 
-            return temp;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
+                {
+                    cmd.Parameters.Add("@CompanyName", SqlDbType.NVarChar).Value = inClassCustomer.companyName;
+                    cmd.Parameters.Add("@Address", SqlDbType.NVarChar).Value = inClassCustomer.address;
+                    cmd.Parameters.Add("@ZipCity", SqlDbType.NVarChar).Value = inClassCustomer.zipCity;
+                    cmd.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = inClassCustomer.phone;
+                    cmd.Parameters.Add("@Mail", SqlDbType.NVarChar).Value = inClassCustomer.mail;
+                    cmd.Parameters.Add("@ContactName", SqlDbType.NVarChar).Value = inClassCustomer.contactName;
+                    cmd.Parameters.Add("@Country", SqlDbType.Int).Value = inClassCustomer.country.id;
+
+                    OpenDB();
+                    res = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                CloseDB();
+            }
+            return res;
         }
 
-        public void UpdateCustomerInDB(ClassCustomer inCustomer)
+        public void UpdateCustomerInDB(ClassCustomer inClassCustomer)
         {
+            string sqlQuery = "UPDATE Customer SET " +
+                "CompanyName = @CompanyName, " +
+                "Address = @Address, " +
+                "ZipCity = @ZipCity, " +
+                "Phone = @Phone, " +
+                "Mail = @Mail, " +
+                "ContactName = @ContactName, " +
+                "Country = @Country " +
+                "WHERE id = @id";
 
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, con))
+                {
+                    cmd.Parameters.Add("@CompanyName", SqlDbType.NVarChar).Value = inClassCustomer.companyName;
+                    cmd.Parameters.Add("@Address", SqlDbType.NVarChar).Value = inClassCustomer.address;
+                    cmd.Parameters.Add("@ZipCity", SqlDbType.NVarChar).Value = inClassCustomer.zipCity;
+                    cmd.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = inClassCustomer.phone;
+                    cmd.Parameters.Add("@Mail", SqlDbType.NVarChar).Value = inClassCustomer.mail;
+                    cmd.Parameters.Add("@ContactName", SqlDbType.NVarChar).Value = inClassCustomer.contactName;
+                    cmd.Parameters.Add("@Country", SqlDbType.Int).Value = inClassCustomer.country.id;
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = inClassCustomer.id;
+
+                    OpenDB();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                CloseDB();
+            }
         }
 
         public void UpdateMeatVolume(ClassOrder inOrder)

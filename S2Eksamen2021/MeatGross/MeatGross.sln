@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO", "IO\IO.csproj", "{7029
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{6CFA16E7-CCA0-4F44-A0B2-0A309BF9B925}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeatGross.UnitTests", "MeatGross.UnitTests\MeatGross.UnitTests.csproj", "{22F021D6-1280-4720-9F88-AA702390E9DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6CFA16E7-CCA0-4F44-A0B2-0A309BF9B925}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CFA16E7-CCA0-4F44-A0B2-0A309BF9B925}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CFA16E7-CCA0-4F44-A0B2-0A309BF9B925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F021D6-1280-4720-9F88-AA702390E9DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F021D6-1280-4720-9F88-AA702390E9DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F021D6-1280-4720-9F88-AA702390E9DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F021D6-1280-4720-9F88-AA702390E9DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

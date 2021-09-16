@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using IO;
 using Repository;
 
@@ -22,16 +23,24 @@ namespace BIZ
         private ClassCallWebAPI CCWA = new ClassCallWebAPI();
         private ClassMeatGrossDB CMGDB = new ClassMeatGrossDB();
 
+        // Unit test fields
+        private int _Number2;
+        private int _Number1;
+
         public ClassBIZ()
         {
-            listCountry = new List<ClassCountry>();
-            listMeat = new List<ClassMeat>();
+            listCustomer = CMGDB.GetAllCustomersFromDB(); // Fill the list from the database so it can be displayed in the GUI.
+            listCountry = CMGDB.GetAllCountriesFromDB();
+            listMeat = CMGDB.GetAllMeatFromDB(); ;
             apiRates = new ClassApiRates();
             // selectedCustomer = new ClassCustomer();
             editOrNewCustomer = new ClassCustomer();
             order = new ClassOrder();
             isEnabled = false;
-            listCustomer = CMGDB.GetAllCustomersFromDB(); // Fill the list from the database so it can be displayed in the GUI.
+
+            // Unit test
+            Number1 = 0;
+            Number2 = 0;
         }
 
         public List<ClassCustomer> listCustomer
@@ -94,7 +103,7 @@ namespace BIZ
                 if (_selectedCustomer != value)
                 {
                     _selectedCustomer = value;
-                    // selectedCustomer = new ClassCustomer();
+                    editOrNewCustomer = new ClassCustomer(value);
                 }
                 Notify("selectedCustomer");
             }
@@ -139,6 +148,36 @@ namespace BIZ
             }
         }
 
+        public int Number1
+        {
+            get { return _Number1; }
+            set
+            {
+                if (_Number1 != value)
+                {
+                    _Number1 = value;
+                }
+                Notify("Number1");
+            }
+        }
+
+        public int Number2
+        {
+            get { return _Number2; }
+            set
+            {
+                if (_Number2 != value)
+                {
+                    _Number2 = value;
+                }
+                Notify("Number2");
+            }
+        }
+
+        public int CalcResAddition()
+        {
+            return Number1 + Number2;
+        }
 
         public void UpdateListCustomer()
         {
@@ -154,19 +193,18 @@ namespace BIZ
 
         public void SetUpListCustomer()
         {
-
+            listCustomer = CMGDB.GetAllCustomersFromDB();
         }
 
         public int SaveNewCustomer()
         {
-            int temp = 0;
-
-            return temp;
+            return CMGDB.SaveNewCustomerInDB(editOrNewCustomer);
+            // CMGDB.GetAllCustomersFromDB();
         }
 
         public void UpdateCustomer()
         {
-
+            CMGDB.UpdateCustomerInDB(editOrNewCustomer);
         }
 
         public void SaveSaleInDB()

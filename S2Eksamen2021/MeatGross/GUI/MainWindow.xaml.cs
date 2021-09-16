@@ -34,9 +34,9 @@ namespace GUI
             BIZ = new ClassBIZ();
 
             UCCustomerEdit = new Usercontrols.UserControlCustomerEdit(BIZ, LeftGrid);
-            UCCustomer = new Usercontrols.UserControlCustomer(BIZ, LeftGrid, UCCustomerEdit);
-            UCOrderMeat = new Usercontrols.UserControlOrderMeat(BIZ, RightGrid, UCMeatPriceUpdate);
             UCMeatPriceUpdate = new Usercontrols.UserControlMeatPriceUpdate(BIZ, RightGrid);
+            UCCustomer = new Usercontrols.UserControlCustomer(BIZ, LeftGrid, UCCustomerEdit);
+            UCOrderMeat = new Usercontrols.UserControlOrderMeat(BIZ, RightGrid, LeftGrid, UCMeatPriceUpdate);
 
             LeftGrid.Children.Add(UCCustomer);
             RightGrid.Children.Add(UCOrderMeat);

@@ -26,11 +26,11 @@ namespace GUI.Usercontrols
         Grid gridRight;
         UserControlMeatPriceUpdate UCMPU;
 
-        public UserControlOrderMeat(ClassBIZ inBIZ, Grid inGrid, UserControlMeatPriceUpdate inUC)
+        public UserControlOrderMeat(ClassBIZ inBIZ, Grid inGridRight, Grid inGridLeft, UserControlMeatPriceUpdate inUC)
         {
             InitializeComponent();
             BIZ = inBIZ;
-            gridRight = inGrid;
+            gridRight = inGridRight;
             UCMPU = inUC;
             MainGrid.DataContext = BIZ;
         }
